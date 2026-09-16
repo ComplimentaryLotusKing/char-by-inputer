@@ -3,7 +3,7 @@
   "name": "char-by inputer",
   "version": "1.1",
   "description": "从当前光标位置逐字符输入文本，保留格式。缩进可能出错，请自行检查缩进。",
-  "permissions": ["scripting", "activeTab"],
+  "permissions": ["activeTab"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "char-by inputer"

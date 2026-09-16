@@ -10,6 +10,20 @@ function setStatus(msg, isError = false) {
   statusEl.style.color = isError ? '#dc2626' : '#2563eb';
 }
 
+// 粘贴卫生检查：某些反粘贴站点会在页面失焦（即打开本弹窗）时向剪贴板顶部写入空白内容，
+// 导致粘贴只得一个空格。此处识别这种情况并明确提示，避免静默失败。
+textEl.addEventListener('paste', () => {
+  // 等粘贴完成（异步）再检查文本框内容
+  setTimeout(() => {
+    const val = textEl.value;
+    if (val.length > 0 && val.trim() === '') {
+      setStatus('检测到粘贴空白内容，剪贴板可能被网站的反粘贴脚本污染，请按 Win+V 选择正确的历史条目重新粘贴。', true);
+    } else if (val.trim() !== '') {
+      statusEl.textContent = '';
+    }
+  }, 0);
+});
+
 // 关键：确保 content.js 已就绪，否则动态注入
 async function ensureContentScript(tabId) {
   // 先尝试 ping
@@ -61,7 +75,6 @@ startBtn.addEventListener('click', async () => {
       delay,
       jitter
     });
-    window.close();
   } catch (e) {
     setStatus('消息发送失败：' + e.message, true);
   }

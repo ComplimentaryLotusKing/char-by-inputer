@@ -1,11 +1,10 @@
-let lastRange = null;   // 新增
-let startToken = 0;     // 新增
-
 (() => {
   // 防重复注入
   if (window.__typingExtInjected__) return;
   window.__typingExtInjected__ = true;
 
+  let lastRange = null;   // 新增
+  let startToken = 0;     // 新增
   let typingSession = null;
   let lastFocused = null;
   let lastSelectionStart = 0;
