@@ -35,4 +35,4 @@
 
 1. `educoder.net` 检测到扩展运行会污染剪贴板，可按 win+V 手动选择复制的内容
 2. `educoder.net` 检测到扩展运行会强制清除输入框焦点
-3. 上述问题无法解决请下载功能相同的独立应用程序`CharByInputer.exe`
+3. 上述问题无法解决请下载功能相同的独立应用程序 [下载 CharByInputer.exe](https://github.com/ComplimentaryLotusKing/char-by-inputer/releases/download/0.0/CharByInputer.exe)
